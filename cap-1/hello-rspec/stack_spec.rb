@@ -20,7 +20,7 @@ describe Stack do
       stack.push(1)
       stack.push(2)
 
-      stack.top.should == 2
+      stack.top.should eq(2)
     end
   end
 end

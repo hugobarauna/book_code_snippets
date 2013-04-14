@@ -11,18 +11,17 @@ puts "\t" + main_object.singleton_class.ancestors.join(", ")
 #
 # RSpec's should is defined in RSpec::Expectations::Syntax.enable_should
 describe "Expectations internals" do
-  it do
-    main_object.should respond_to(:should)
+  context "for the main object" do
+    subject { main_object }
+
+    it { should respond_to(:should) }
+    it { should respond_to(:should_not) }
   end
 
-  it do
-    # 1.should retorna um objeto RSpec::Matchers::BuiltIn::PositiveOperatorMatcher.
-    # Dentro desse objeto é sobrescrito o método ==
-    1.should == 1
-    1 == 1
-  end
+  # 1.should retorna um objeto RSpec::Matchers::BuiltIn::PositiveOperatorMatcher.
+  # Dentro desse objeto é sobrescrito o método ==
+  # 1.should == 1
 
   # object.should     returns a PositiveExpectationHandler
   # object.should_not returns a NegativeExpectationHandler
 end
-

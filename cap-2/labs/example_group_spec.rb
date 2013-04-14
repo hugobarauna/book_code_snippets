@@ -34,7 +34,6 @@ example_group_father = describe Stack, :skip do
   end
 end
 
-require "pry"; binding.pry
 
 describe "A specific example group" do
   subject { example_group_father }
@@ -54,6 +53,8 @@ describe "A specific example group" do
   it "does not have any example" do
     subject.should have(0).examples
   end
+
+  its(:class) { should eq(Class) }
 end
 
 describe "A specific nested example group" do
@@ -71,6 +72,8 @@ describe "A specific nested example group" do
     subject.should have(1).examples
   end
 
+  its(:class) { should eq(Class) }
+
   context "its example" do
     it "is possible to get its example's description" do
       subject.examples.first.description.should eq("puts an element at the top of the stack")
@@ -82,4 +85,12 @@ describe "A instance of RSpec::Core::Example" do
   subject { example }
 
   its(:example_group) { should be(example_group_child) }
+end
+
+
+the_example_group = describe "The self on the block passef to the `it` method" do
+  it "it is a instance of RSpec::Core::ExampleGroup" do
+    self_on_it_block_class = self.class
+    self_on_it_block_class.should be(the_example_group)
+  end
 end

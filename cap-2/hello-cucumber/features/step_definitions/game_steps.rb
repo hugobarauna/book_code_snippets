@@ -6,7 +6,7 @@ Quando /^começo um novo jogo$/ do
 end
 
 Então /^vejo a seguinte mensagem na tela:$/ do |text|
-  @game.output.should include(text)
+  expect(@game.output).to include(text)
 end
 
 class Game

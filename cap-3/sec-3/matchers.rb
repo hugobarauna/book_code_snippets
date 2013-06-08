@@ -106,7 +106,7 @@ end
 
 describe "Predicate matchers", "for an old ball" do
   subject(:cart) do
-    cart = double("cart",
+    double("cart",
       old?: true,
       has_products?: true,
       thing?: true,
@@ -128,6 +128,26 @@ describe "Predicate matchers", "for an old ball" do
 
   it 'generates a be_an_object from an object? method' do
     expect(cart).to be_an_object
+  end
+end
+
+describe 'RaiseError matcher' do
+  it 'works for every exception' do
+    expect { raise }.to raise_error
+    expect { raise }.to raise_exception
+
+    expect do
+      raise
+    end.to raise_error
+  end
+
+  it 'works matching the exception class' do
+    expect { raise RuntimeError }.to raise_error(RuntimeError)
+    expect { raise StandarError }.to_not raise_error(RuntimeError)
+  end
+
+  it 'works matching the exception message' do
+    expect { raise 'ZOMG' }.to raise_error('ZOMG')
   end
 end
 

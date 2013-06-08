@@ -14,11 +14,11 @@ describe "Equality matchers" do
     expect(a).to equal(a)
     expect(a).not_to equal("a")
 
-    expect(a).to eql("a")
-    expect(a).not_to eql("b")
-
     expect(a).to be(a)
     expect(a).not_to be("a")
+
+    expect(a).to eql("a")
+    expect(a).not_to eql("b")
 
     expect(a).to eq(a)
     expect(a).to eq("a")

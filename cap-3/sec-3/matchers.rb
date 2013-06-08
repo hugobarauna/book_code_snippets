@@ -105,11 +105,30 @@ describe "String related matchers" do
 end
 
 describe "Predicate matchers", "for an old ball" do
-  subject(:ball) do
-    ball = double("ball", old?: true )
+  subject(:cart) do
+    cart = double("cart",
+      old?: true,
+      has_products?: true,
+      thing?: true,
+      object?: true
+    )
   end
 
-  it { should be_old }
+  it 'generates a be_old matcher from a old? method' do
+    expect(cart).to be_old
+  end
+
+  it 'generates a have_products matcher from a has_products? method' do
+    expect(cart).to have_products
+  end
+
+  it 'generates a be_a_thing from an thing? method' do
+    expect(cart).to be_a_thing
+  end
+
+  it 'generates a be_an_object from an object? method' do
+    expect(cart).to be_an_object
+  end
 end
 
 describe "Number related matchers" do

@@ -2,5 +2,5 @@ source "https://rubygems.org"
 
 gem "rspec"
 gem "cucumber"
-gem "pry"
-gem "pry-debugger"
+gem "pry", require: false
+gem "pry-debugger", require: false

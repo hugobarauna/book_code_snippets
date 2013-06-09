@@ -171,6 +171,15 @@ describe 'BeWithin matcher' do
   end
 end
 
+describe 'Cover matcher' do
+  it 'can be used to verify the membership relation with ranges' do
+    expect((1..10)).to cover(1)
+    expect((1..10)).to cover(10)
+    expect((1..10)).to cover(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    expect((1..10)).to cover(5, 6, 7, 8)
+  end
+end
+
 describe "Number related matchers" do
   describe "BeComparedTo matchers", "for the `7` number" do
     subject { 7 }

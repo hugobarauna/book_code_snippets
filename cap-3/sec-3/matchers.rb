@@ -250,8 +250,8 @@ describe 'Have Matcher' do
     it 'works even when the collection is a string' do
       words = "hugo"
 
-      expect(words).to have(3).letters
-      # expect(words).to have(3).items
+      expect(words).to have(4).letters
+      expect(words).to have(4).items
     end
   end
 
@@ -260,5 +260,39 @@ describe 'Have Matcher' do
 
     expect(collection).to have_at_least(3).elements
     expect(collection).to have_at_most(5).elements
+  end
+end
+
+describe 'A use case for the change matcher' do
+  let(:klass) do
+    class Game
+      attr_reader :state
+
+      def initialize
+        @state = :initial
+      end
+
+      def start
+        @state = :started
+      end
+    end
+
+    Game
+  end
+
+  it 'works by passing a block to the change method' do
+    game = klass.new
+
+    expect {
+      game.start
+    }.to change{ game.state }.from(:initial).to(:started)
+  end
+
+  it 'works by passing a receiver and a message name' do
+    game = klass.new
+
+    expect {
+      game.start
+    }.to change(game, :state).from(:initial).to(:started)
   end
 end

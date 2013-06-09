@@ -147,7 +147,8 @@ describe 'RaiseError matcher' do
   end
 
   it 'works matching the exception message' do
-    expect { raise 'ZOMG' }.to raise_error('ZOMG')
+    expect { raise 'error message' }.to raise_error('error message')
+    expect { raise 'wrong message' }.to_not raise_error('error message')
   end
 end
 

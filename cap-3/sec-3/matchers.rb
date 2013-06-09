@@ -211,3 +211,54 @@ describe 'Matchers for verifying the class of an object' do
     end
   end
 end
+
+describe 'Have Matcher' do
+  context 'when actual owns a collection returned by actual#method_name' do
+    let(:klass) do
+      class BagOfWords
+        attr_reader :words
+
+        def initialize
+          @words = []
+        end
+
+        def put(*words)
+          @words += words
+        end
+      end
+
+      BagOfWords
+    end
+
+    it 'works when calling sending Have#method_name' do
+      actual = klass.new
+      actual.put(1, 2)
+
+      expect(actual).to have(2).words
+    end
+  end
+
+  context 'when actual is a collection' do
+    it 'works by calling any method with Have#method' do
+      collection = [1, 2, 3]
+
+      expect(collection).to have(3).items
+      expect(collection).to have(3).children
+      expect(collection).to have(3).things
+    end
+
+    it 'works even when the collection is a string' do
+      words = "hugo"
+
+      expect(words).to have(3).letters
+      # expect(words).to have(3).items
+    end
+  end
+
+  it 'has a have_at_least and have_at_most matchers' do
+    collection = [1, 2, 3, 4, 5]
+
+    expect(collection).to have_at_least(3).elements
+    expect(collection).to have_at_most(5).elements
+  end
+end

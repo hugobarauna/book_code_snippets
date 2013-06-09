@@ -180,44 +180,13 @@ describe 'Cover matcher' do
   end
 end
 
-describe "Number related matchers" do
-  describe "BeComparedTo matchers", "for the `7` number" do
-    subject { 7 }
-
-    it { should be == 7 }
-    it { should be < 10 }
-    it { should be > 1 }
-    it { should be <= 7 }
-    it { should be >= 7 }
-    it { should be ===  7}
-
-    describe "=~ operator" do
-      subject { "foo" }
-
-      it { should be =~ /foo/ }
-      it { should_not be =~ /bar/ }
-    end
-  end
-
-  it "has a BeWithin matcher"
-end
-
-describe "Operator matchers", "for the `7` number" do
-  subject { 7 }
-
-  it { should == 7 }
-  # http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax
-  # The matchers below work, "but have never been recommended"
-  it { should < 10 }
-  it { should > 1 }
-  it { should <= 7 }
-  it { should >= 7 }
-  it { should ===  7}
-
-  describe "=~ operator", "for the 'foo' string" do
-    subject { "foo" }
-
-    it { should =~ /foo/ }
-    it { should_not =~ /bar/ }
+describe "BeComparedTo matcher (number comparison matcher)" do
+  it 'works more or less like operator matchers' do
+    expect(7).to be == 7
+    expect(7).to be < 10
+    expect(7).to be > 1
+    expect(7).to be <= 7
+    expect(7).to be >= 7
+    expect(7).to be ===  7
   end
 end

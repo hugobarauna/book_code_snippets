@@ -152,6 +152,25 @@ describe 'RaiseError matcher' do
   end
 end
 
+describe 'BeWithin matcher' do
+  it 'should be used for floating point value verifications' do
+    expect {
+      expect(Math::PI).to eq(3.14)
+    }.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+
+    expect(Math::PI).to be_within(0.01).of(3.14)
+  end
+
+  it 'uses the (expected - delta) <= actual <= (expected - delta) expression' do
+    expect(4.5).to be_within(0.5).of(5)
+    expect(5.0).to be_within(0.5).of(5)
+    expect(5.5).to be_within(0.5).of(5)
+
+    expect(4.49).to_not be_within(0.5).of(5)
+    expect(5.51).to_not be_within(0.5).of(5)
+  end
+end
+
 describe "Number related matchers" do
   describe "BeComparedTo matchers", "for the `7` number" do
     subject { 7 }

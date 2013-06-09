@@ -190,3 +190,24 @@ describe "BeComparedTo matcher (number comparison matcher)" do
     expect(7).to be ===  7
   end
 end
+
+describe 'Matchers for verifying the class of an object' do
+  describe 'BeInstanceOf' do
+    it 'verifies if an object is an instance of the given class' do
+      expect(5).to be_an_instance_of(Fixnum)
+      expect(5).not_to be_an_instance_of(Numeric)
+
+      expect(5).not_to be_an_instance_of(String)
+    end
+  end
+
+  describe 'BeAKindOf' do
+    it 'verifies if an object is an instance of a subclass of the given class' do
+      expect(5).to be_a_kind_of(Fixnum)
+      expect(5).to be_a_kind_of(Numeric)
+      expect(5).to be_a_kind_of(Object)
+
+      expect(5).not_to be_a_kind_of(String)
+    end
+  end
+end

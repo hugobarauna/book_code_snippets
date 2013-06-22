@@ -41,6 +41,7 @@ describe "Array related matchers" do
     expect(array).to include(1)
     expect(array).to include(1, 2, 3)
     expect(array).to include(1, 2, 3, 4)
+    expect(array).to include(*[1, 2, 3, 4])
 
     expect(array).not_to include(0)
     expect(array).not_to include(5)

@@ -8,7 +8,7 @@ class Category
   end
 
   def add_subcategories(*subcategories)
-    # @subcategories += subcategories
+    @subcategories += subcategories
   end
 end
 

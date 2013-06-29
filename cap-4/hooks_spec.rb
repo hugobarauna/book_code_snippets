@@ -48,3 +48,37 @@ describe Game, "in the final phase" do
     end
   end
 end
+
+describe "Around hook examples" do
+  context "simple example" do
+    around do |example|
+      puts "Before the example"
+      example.run
+      puts "After the example"
+    end
+
+    it do
+      puts "Inside the example"
+    end
+  end
+
+  context "database transaction example" do
+    class Database
+      def self.transaction
+        puts "open transaction"
+        yield
+        puts "rollback transaction"
+      end
+    end
+
+    describe "around hook" do
+      around(:each) do |example|
+        Database.transaction(&example)
+      end
+
+      it "runs the example as a proc" do
+        puts "saving a lot of data in the database"
+      end
+    end
+  end
+end

@@ -49,7 +49,7 @@ class Game
   private
 
   def congratulate_player
-    @ui.write("Congratuations!")
+    @ui.write("Congratulations!")
   end
 end
 
@@ -65,7 +65,7 @@ describe Game do
 
     @game.player_hits_target
 
-    expect(@game.output).to include("Congratuations!")
+    expect(@game.output).to include("Congratulations!")
   end
 end
 
@@ -76,7 +76,7 @@ describe Game do
   it "congratulates the player when the player hits the target" do
     game.player_hits_target
 
-    expect(game.output).to include("Congratuations!")
+    expect(game.output).to include("Congratulations!")
   end
 end
 

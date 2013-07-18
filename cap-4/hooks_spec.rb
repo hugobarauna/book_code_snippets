@@ -20,7 +20,7 @@ class Game
   private
 
   def congratulate_player
-    @output = "Congratuations!"
+    @output = "Congratulations!"
   end
 
   def send_emails_to_player_friends
@@ -38,7 +38,7 @@ describe Game, "in the final phase" do
     it "congratulates the player" do
       @game.player_hits_target
 
-      expect(@game.output).to eq("Congratuations!")
+      expect(@game.output).to eq("Congratulations!")
     end
 
     it "sets the score to 100" do

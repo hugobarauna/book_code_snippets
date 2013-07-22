@@ -1,6 +1,7 @@
 class DeepThought
   def initialize(printer)
     @printer = printer
+    @printer.print("Hello, I'm the DeepThought super computer...")
   end
 
   def print_the_answer
@@ -10,7 +11,7 @@ end
 
 describe DeepThought do
   it "prints the answer to the ultimate question" do
-    printer = double("printer")
+    printer = double("printer").as_null_object
     computer = DeepThought.new(printer)
 
     expect(printer).to receive(:print).with("42")

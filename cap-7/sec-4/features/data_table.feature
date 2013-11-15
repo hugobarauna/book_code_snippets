@@ -9,12 +9,12 @@ Funcionalidade: Data table
 
   Cenário: multiplicação de matrizes
     Dado que tenho a matriz A:
-      |1|2|
-      |3|4|
+      | 1 | 2 |
+      | 3 | 4 |
     E que tenho a matriz B:
-      |5|6|
-      |7|8|
+      | 5 | 6 |
+      | 7 | 8 |
     Quando multiplico a matriz A com a matriz B
     Então o resultado é:
-      |19|22|
-      |43|50|
+      | 19 | 22 |
+      | 43 | 50 |

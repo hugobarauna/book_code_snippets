@@ -3,7 +3,7 @@
 Funcionalidade: Data table
 
   Cenário: tabela simples
-    Dado que tenho um cadastro de usuário com os seguintes atributos:
+    Dado que existe o seguinte cadastro de usuário:
       | nome                   | idade |
       | Hugo Pessoa de Baraúna | 27    |
 

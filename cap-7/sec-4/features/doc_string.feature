@@ -4,7 +4,7 @@ Funcionalidade: Doc string
 
   Cenário: Cadastro com sucesso
     Quando um visitante faz um cadastro com o nome "João da Silva"
-    Então ele deve receber um e-mail de boas vindas com o seguinte texto:
+    Então ele recebe um email com o seguinte texto:
       """
       Olá João da Silva,
 

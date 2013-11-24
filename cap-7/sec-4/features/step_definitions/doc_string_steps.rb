@@ -2,7 +2,7 @@ Quando(/^um visitante faz um cadastro com o nome "(.*?)"$/) do |name|
   @name = name
 end
 
-Então(/^ele deve receber um e\-mail de boas vindas com o seguinte texto:$/) do |email_body|
+Então(/^ele recebe um email com o seguinte texto:$/) do |email_body|
   text = <<-EOF
 Olá João da Silva,
 

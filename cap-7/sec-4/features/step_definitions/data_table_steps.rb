@@ -1,8 +1,7 @@
 require 'matrix'
 
 Dado(/^que existe o seguinte cadastro de usuário:$/) do |table|
-    require 'pry'; binding.pry
-  puts "it works"
+  # puts "it works"
 end
 
 Dado(/^que tenho a matriz A:$/) do |table|

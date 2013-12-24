@@ -1,10 +1,10 @@
 # language: pt
 
 Funcionalidade: Desconto
-  O desconto dos produtos da nossa loja são baseados em até
-  três variáveis: tipo do produto, preço e quantidade em estoque.
 
   Esquema do Cenário: Cálculo de desconto de produto
+    O desconto dos produtos da nossa loja são baseados em até
+    três variáveis: tipo do produto, preço e quantidade em estoque.
 
     Dado que um <produto> tem um estoque de <estoque> unidades
     E que esse produto custa <preco> reais
@@ -29,6 +29,8 @@ Funcionalidade: Desconto
       | feijão  | 1500    | 3     | 1        |
 
   Esquema do Cenário: Cálculo de desconto de produto
+    O desconto dos produtos da nossa loja são baseados em até
+    três variáveis: tipo do produto, preço e quantidade em estoque.
 
     Dado que um <produto> tem um estoque de <estoque> unidades
     E que esse produto custa <preco> reais

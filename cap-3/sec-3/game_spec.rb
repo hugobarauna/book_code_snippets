@@ -10,9 +10,9 @@ class Game
   end
 end
 
-describe Game do
+RSpec.describe Game do
   describe "#start" do
-    it 'changes the game state from :initial to :started' do
+    it "changes the game state from :initial to :started" do
       game = Game.new
 
       expect {

@@ -4,7 +4,7 @@ RSpec::Matchers.define :be_a_multiple_of do |expected|
   end
 end
 
-describe "The be_a_multiple_of custom matcher" do
+RSpec.describe "The be_a_multiple_of custom matcher" do
   it "can be used to verify if a number is a multiple of another one" do
     expect(21).to be_a_multiple_of(7)
     expect(15).to be_a_multiple_of(3)

@@ -4,10 +4,10 @@ class SimplestMatcher
   end
 end
 
-describe 'The matcher procotol' do
-  context 'a minimal matcher' do
-    it 'has a #matches?(actual) method' do
-      expect('anything').to SimplestMatcher.new
+RSpec.describe "The matcher protocol" do
+  context "a minimal matcher" do
+    it "has a #matches?(actual) method" do
+      expect("anything").to SimplestMatcher.new
     end
   end
 
@@ -20,7 +20,7 @@ describe 'The matcher procotol' do
   end
 end
 
-describe do
+RSpec.describe do
   it do
     actual   = 'got it'
     expected = 'got it'

@@ -8,11 +8,11 @@ class Stack
   end
 
   def top
-    @elements[-1]
+    @elements.last
   end
 end
 
-describe Stack do
+RSpec.describe Stack do
   describe "#push" do
     it "puts an element at the top of the stack" do
       stack = Stack.new

@@ -12,22 +12,25 @@ class Cart
   end
 end
 
-describe Cart do
+class Product
+end
+
+RSpec.describe Cart do
   describe "#empty?" do
     it "returns true when the cart has no products" do
       cart = Cart.new
 
-      expect(cart.empty?).to be_true
+      expect(cart.empty?).to be_truthy
       expect(cart).to be_empty
     end
   end
 
   describe "#has_products?" do
     it "returns true if it has products" do
-      product = double("product")
+      product = Product.new
       cart = Cart.new(product)
 
-      expect(cart.has_products?).to be_true
+      expect(cart.has_products?).to be_truthy
       expect(cart).to have_products
     end
   end

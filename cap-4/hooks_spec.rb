@@ -1,19 +1,17 @@
 class Game
   attr_accessor :phase
-  attr_reader :output, :score, :mails_sent
+  attr_reader :output, :score
 
   def initialize
     @phase = :initial
-    @output = ''
+    @output = ""
     @score = 0
-    @mails_sent = false
   end
 
   def player_hits_target
     if @phase == :final
       congratulate_player
       @score = 100
-      send_emails_to_player_friends
     end
   end
 
@@ -22,13 +20,9 @@ class Game
   def congratulate_player
     @output = "Congratulations!"
   end
-
-  def send_emails_to_player_friends
-    @mails_sent = true
-  end
 end
 
-describe Game, "in the final phase" do
+RSpec.describe Game, "in the final phase" do
   before do
     @game = Game.new
     @game.phase = :final
@@ -49,36 +43,46 @@ describe Game, "in the final phase" do
   end
 end
 
-describe "Around hook examples" do
-  context "simple example" do
-    around do |example|
-      puts "Before the example"
-      example.run
-      puts "After the example"
-    end
-
-    it do
-      puts "Inside the example"
-    end
+RSpec.describe "An around hook example" do
+  around do |example|
+    puts "Before the example"
+    example.run
+    puts "After the example"
   end
 
-  context "database transaction example" do
-    class Database
-      def self.transaction
-        puts "open transaction"
-        yield
-        puts "rollback transaction"
-      end
-    end
+  it do
+    puts "Inside the example"
+  end
+end
 
-    describe "around hook" do
-      around(:each) do |example|
-        Database.transaction(&example)
-      end
+RSpec.describe "An around hook example" do
+  before do
+    puts "Before the example"
+  end
 
-      it "runs the example as a proc" do
-        puts "saving a lot of data in the database"
-      end
-    end
+  after do
+    puts "After the example"
+  end
+
+  it do
+    puts "Inside the example"
+  end
+end
+
+class Database
+  def self.transaction
+    puts "open transaction"
+    yield
+    puts "rollback transaction"
+  end
+end
+
+RSpec.describe "around hook" do
+  around(:each) do |example|
+    Database.transaction(&example)
+  end
+
+  it "runs the example as a proc" do
+    puts "saving a lot of data in the database"
   end
 end

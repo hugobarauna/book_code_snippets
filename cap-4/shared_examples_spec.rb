@@ -11,8 +11,8 @@ class PublishableObject
   include Publishable
 end
 
-shared_examples_for "a publishable object" do
-  describe "#publish" do
+RSpec.shared_examples_for "a publishable object" do
+  describe "#publish!" do
     it "saves the publication date" do
       subject.publish!
 
@@ -22,7 +22,20 @@ shared_examples_for "a publishable object" do
   end
 end
 
-describe "A publishable object" do
+RSpec.describe "A published object" do
+  subject { PublishableObject.new }
+
+  describe "#publish!" do
+    it "saves the publication date" do
+      subject.publish!
+
+      today = Time.now.strftime("%Y-%m-%d")
+      expect(subject.published_on).to eq(today)
+    end
+  end
+end
+
+RSpec.describe "A published object" do
   subject { PublishableObject.new }
 
   include_examples "a publishable object"
@@ -32,7 +45,7 @@ class BlogPost
   include Publishable
 end
 
-describe BlogPost do
+RSpec.describe BlogPost do
   it_behaves_like "a publishable object"
 end
 
@@ -40,7 +53,6 @@ class Paper
   include Publishable
 end
 
-
-describe Paper do
+RSpec.describe Paper do
   it_behaves_like "a publishable object"
 end

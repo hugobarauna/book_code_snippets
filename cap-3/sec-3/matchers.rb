@@ -1,8 +1,8 @@
 describe "Be matchers", "when actual is `true`" do
   subject { true }
 
-  it { should be_true }
-  it { should_not be_false}
+  it { should be_truthy }
+  it { should_not be_falsey }
   it { should_not be_nil }
   it { should be }
 end
@@ -195,7 +195,7 @@ end
 describe 'Matchers for verifying the class of an object' do
   describe 'BeInstanceOf' do
     it 'verifies if an object is an instance of the given class' do
-      expect(5).to be_an_instance_of(Fixnum)
+      expect(5).to be_an_instance_of(Integer)
       expect(5).not_to be_an_instance_of(Numeric)
 
       expect(5).not_to be_an_instance_of(String)
@@ -204,7 +204,7 @@ describe 'Matchers for verifying the class of an object' do
 
   describe 'BeAKindOf' do
     it 'verifies if an object is an instance of a subclass of the given class' do
-      expect(5).to be_a_kind_of(Fixnum)
+      expect(5).to be_a_kind_of(Integer)
       expect(5).to be_a_kind_of(Numeric)
       expect(5).to be_a_kind_of(Object)
 
@@ -230,43 +230,12 @@ describe 'Have Matcher' do
 
       BagOfWords
     end
-
-    it 'works when calling sending Have#method_name' do
-      actual = klass.new
-      actual.put(1, 2)
-
-      expect(actual).to have(2).words
-    end
-  end
-
-  context 'when actual is a collection' do
-    it 'works by calling any method with Have#method' do
-      collection = [1, 2, 3]
-
-      expect(collection).to have(3).items
-      expect(collection).to have(3).children
-      expect(collection).to have(3).things
-    end
-
-    it 'works even when the collection is a string' do
-      words = "hugo"
-
-      expect(words).to have(4).letters
-      expect(words).to have(4).items
-    end
-  end
-
-  it 'has a have_at_least and have_at_most matchers' do
-    collection = [1, 2, 3, 4, 5]
-
-    expect(collection).to have_at_least(3).elements
-    expect(collection).to have_at_most(5).elements
   end
 end
 
 describe 'A use case for the change matcher' do
   let(:klass) do
-    class Game
+    Class.new do
       attr_reader :state
 
       def initialize
@@ -277,8 +246,6 @@ describe 'A use case for the change matcher' do
         @state = :started
       end
     end
-
-    Game
   end
 
   it 'works by passing a block to the change method' do

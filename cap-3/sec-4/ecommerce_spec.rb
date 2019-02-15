@@ -25,32 +25,28 @@ class Subcategory
   end
 end
 
-describe Category do
+RSpec.describe Category do
   it "contains all the products of its subcategories" do
-    eletronics  = Category.new("eletronics")
+    electronics  = Category.new("electronics")
     computers   = Subcategory.new("computers")
     cell_phones = Subcategory.new("cell phones")
     computers.add_product("MacBook")
     cell_phones.add_product("iPhone")
 
-    eletronics.add_subcategories(computers, cell_phones)
+    electronics.add_subcategories(computers, cell_phones)
 
-    expect(eletronics).to contain_products("MacBook", "iPhone")
+    expect(electronics).to contain_products("MacBook", "iPhone")
   end
 end
 
 RSpec::Matchers.define :contain_products do |*products|
   match do |category|
-    subcategories_products = category.subcategories.map { |sub|
-      sub.products
-    }
-    subcategories_products.flatten!
-
+    subcategories_products = category.subcategories.flat_map(&:products)
     expect(subcategories_products & products).to eq products
   end
 
-  failure_message_for_should do |category|
-    "expected category #{category.name} to contain products #{products}"
+  failure_message do |category|
+    "expected category '#{category.name}' to contain products #{products}"
   end
 end
 

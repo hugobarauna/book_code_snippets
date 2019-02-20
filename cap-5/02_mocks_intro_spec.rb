@@ -9,7 +9,7 @@ class DeepThought
   end
 end
 
-describe DeepThought do
+RSpec.describe DeepThought do
   it "prints the answer to the ultimate question" do
     printer = double("printer").as_null_object
     computer = DeepThought.new(printer)

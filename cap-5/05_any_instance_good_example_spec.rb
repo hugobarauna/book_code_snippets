@@ -1,4 +1,4 @@
-class ApiClient; end
+ApiClient = Class.new
 
 class Weather
   def initialize(api_client)
@@ -13,7 +13,7 @@ class Weather
   end
 end
 
-describe Weather do
+RSpec.describe Weather do
   describe "#today" do
     it "returns 'good' for a sunny day" do
       api_client = ApiClient.new

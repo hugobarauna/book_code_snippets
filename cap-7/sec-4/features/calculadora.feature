@@ -22,4 +22,3 @@ Funcionalidade: Soma
       | 1 | 1 | 2         |
       | 2 | 3 | 5         |
       | 4 | 3 | 7         |
-

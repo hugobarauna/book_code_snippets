@@ -1,0 +1,15 @@
+module SignUpHelpers
+  def sign_up
+    # visita a página de cadastro
+    visit "/cadastro"
+
+    # preenche o formulário de cadastro
+    fill_in "Email", with: "email.qualquer@gmail.com"
+    fill_in "Senha", with: "12345678"
+    fill_in "Confirmação de senha", with: "12345678"
+
+    click_button "Criar conta"
+  end
+end
+
+World(SignUpHelpers)

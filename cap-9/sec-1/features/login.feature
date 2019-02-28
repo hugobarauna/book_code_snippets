@@ -1,12 +1,28 @@
 # language: pt
 
 Funcionalidade: Login
+  Para utilizar o meu sistema
+  Como um visitante
+  Quero fazer login no sistema
+
+  Contexto:
+    * existe um usuário cadastrado com a seguinte credencial:
+      | login       | senha  |
+      | hugobarauna | 123456 |
 
   Cenário: Login com sucesso
-    Após o visitante logar com sucesso na aplicação, ele deve visualizar uma
-    mensagem de boas vindas.
+    Dado que estou na página de login
+    Quando preencho o campo "Login" com "hugobarauna"
+    E preencho o campo "Senha" com "123456"
+    E clico no botão "Logar"
+    Então eu vejo uma mensagem de sucesso
 
-    Dado que um visitante está na home do site
-    E ele está deslogado
-    Quando ele loga com sucesso
-    Então o sistema deve mostrar pra ele uma mensagem de boas vindas
+  Cenário: Login com senha errada
+    Dado que estou na página de login
+    Quando preencho o campo "Login" com "hugobarauna"
+    E preencho o campo "Senha" com "senha errada"
+    E clico no botão "Logar"
+    Então eu vejo uma mensagem de erro com o seguinte text:
+      """
+      Login ou senha estão errados
+      """
